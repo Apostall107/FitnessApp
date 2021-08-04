@@ -4,6 +4,7 @@ using System.Text;
 
 namespace FitnessAppLibrary.BL.Model
 {
+    [Serializable]
     public class UserModel
     {
 
@@ -26,14 +27,14 @@ namespace FitnessAppLibrary.BL.Model
             if (string.IsNullOrWhiteSpace(name))
             {
 
-                throw new ArgumentNullException("Name field cant be blank or null.", nameof(name));
+                throw new ArgumentNullException("Name field can not be blank or Null.", nameof(name));
 
             }
 
             if (gender == null)
             {
 
-                throw new ArgumentNullException("Gender field cant be blank or null.", nameof(gender));
+                throw new ArgumentNullException("Gender field can not be blank or Null.", nameof(gender));
 
             }
 
@@ -48,14 +49,14 @@ namespace FitnessAppLibrary.BL.Model
             if (weight <= 0)
             {
 
-                throw new ArgumentException("Weight cant be 0(zero) or less.", nameof(weight));
+                throw new ArgumentException("Weight can not be 0(zero) or less.", nameof(weight));
 
             }
 
             if (height <= 0)
             {
 
-                throw new ArgumentNullException("Height cant be 0(zero) or less.", nameof(height));
+                throw new ArgumentNullException("Height can not be 0(zero) or less.", nameof(height));
 
             }
 

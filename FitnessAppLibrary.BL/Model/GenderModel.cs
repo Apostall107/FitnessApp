@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FitnessAppLibrary.BL.Model
 {
-
+    [Serializable]
     public class GenderModel
     {
 
@@ -16,7 +16,7 @@ namespace FitnessAppLibrary.BL.Model
             if (string.IsNullOrWhiteSpace(name))
             {
 
-                throw new ArgumentNullException("Field cant be blank or null", nameof(name));
+                throw new ArgumentNullException("Field can not be blank or Null", nameof(name));
 
             }
 
@@ -28,7 +28,7 @@ namespace FitnessAppLibrary.BL.Model
 
         public override string ToString()
         {
-            return base.ToString();
+            return Name;
         }
 
 
