@@ -12,10 +12,10 @@ namespace FitnessAppLibrary.BL.Controller
         public UserModel User { get; }
         
 
-        public UserController(UserModel user)
+        public UserController(string userName, string genderName, DateTime birthDate, double weight, double height)
         {
-
-            User = user ?? throw new ArgumentNullException("User can not be Null.");
+            GenderModel gender = new GenderModel(genderName);
+            User = new UserModel(userName, gender, birthDate, weight, height);
 
         }
 
