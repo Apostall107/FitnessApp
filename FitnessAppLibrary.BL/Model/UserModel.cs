@@ -11,9 +11,30 @@ namespace FitnessAppLibrary.BL.Model
         #region Properties
         public string Name { get;  }
 
-        public GenderModel Gender { get; }
+        public GenderModel Gender { get; set; }
 
-        public DateTime BirthDate { get; }
+        public DateTime BirthDate { get; set; }
+
+        public int Age 
+        {
+
+            get
+            {
+                // Save today's date.
+                DateTime today = DateTime.Today;
+
+                // Calculate the age.
+                int age = today.Year - BirthDate.Year;
+
+                // Go back to the year in which the person was born in case of a leap year
+                if (BirthDate.Date > today.AddYears(-age))
+                {
+                    age--;
+                }
+                    return age;
+            }
+
+        }
 
         public double Weight { get; set; }
 
@@ -69,9 +90,23 @@ namespace FitnessAppLibrary.BL.Model
             Height = height;
         }
 
+        public UserModel(string name) 
+        {
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+
+                throw new ArgumentNullException("Name field can not be blank or Null.", nameof(name));
+
+            }
+
+            Name = name;
+
+        }
+
         public override string ToString()
         {
-            return Name;
+            return Name + " " + Age;
         }
 
     }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
@@ -9,42 +10,37 @@ namespace FitnessAppLibrary.BL.Controller
 {
     public class UserController
     {
-        public UserModel User { get; }
+        public List<UserModel> Users { get; }
+        public UserModel CurrentUser { get;  }
+
+        public bool IsNewUser { get; } = false;
         
 
-        public UserController(string userName, string genderName, DateTime birthDate, double weight, double height)
-        {
-            GenderModel gender = new GenderModel(genderName);
-            User = new UserModel(userName, gender, birthDate, weight, height);
-
-        }
-
-
-
-        /// <summary>
-        /// Save user data.
-        /// </summary>
-        /// <returns></returns>
-        public void Save()
+        public UserController(string userName)
         {
 
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            using (FileStream fs = new FileStream("users.dat",  FileMode.OpenOrCreate))
+            if(string.IsNullOrWhiteSpace(userName))
             {
+                throw new ArgumentNullException("User name can not be empty.", nameof(userName));
+            }
+            Users = new List<UserModel>();
 
-                formatter.Serialize(fs, User);
+            CurrentUser = Users.FirstOrDefault(x => x.Name == userName);
 
+
+            if(CurrentUser == null)
+            {
+                CurrentUser = new UserModel(userName);
+                Users.Add(CurrentUser);
+                IsNewUser = true;
+                Save();
             }
 
+            //GenderModel gender = new GenderModel(genderName);
         }
 
 
-        /// <summary>
-        /// Get user data.
-        /// </summary>
-        /// <returns>User of Application.</returns>
-        public UserModel Load()
+        private List<UserModel> GetUsersData()
         {
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -52,10 +48,55 @@ namespace FitnessAppLibrary.BL.Controller
             using (FileStream fs = new FileStream("users.dat", FileMode.OpenOrCreate))
             {
 
-                return formatter.Deserialize(fs) as UserModel ;
+                if (formatter.Deserialize(fs) is List<UserModel> users)
+                {
+                    return users;
+                }
+                else
+                {
+                    return new List<UserModel>();
+                }
 
             }
 
+        }
+
+
+
+
+        public void AddNewUserData(string genderName, DateTime birthDate, double weight = 0, double height = 0)
+        {
+            //TODO: add checks.
+
+            CurrentUser.Gender = new GenderModel(genderName);
+            CurrentUser.BirthDate = birthDate;
+            CurrentUser.Weight = weight;
+            CurrentUser.Height = height;
+            Save();
+
+        }
+
+
+        //public static bool IsDateTime(string txtDate)
+        //{
+        //    DateTime tempDate;
+        //    return DateTime.TryParse(txtDate, out tempDate);
+        //}
+
+
+
+
+        private void Save()
+        {
+
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            using (FileStream fs = new FileStream("users.dat",  FileMode.OpenOrCreate))
+            {
+
+                formatter.Serialize(fs, Users);
+
+            }
 
         }
 
