@@ -23,7 +23,7 @@ namespace FitnessAppLibrary.BL.Controller
             {
                 throw new ArgumentNullException("User name can not be empty.", nameof(userName));
             }
-            Users = new List<UserModel>();
+            Users = GetUsersData();
 
             CurrentUser = Users.FirstOrDefault(x => x.Name == userName);
 
@@ -86,7 +86,7 @@ namespace FitnessAppLibrary.BL.Controller
 
 
 
-        private void Save()
+        public void Save()
         {
 
             BinaryFormatter formatter = new BinaryFormatter();
