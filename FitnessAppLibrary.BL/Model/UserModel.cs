@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FitnessAppLibrary.BL.Model
 {
@@ -9,13 +7,13 @@ namespace FitnessAppLibrary.BL.Model
     {
 
         #region Properties
-        public string Name { get;  }
+        public string Name { get; }
 
         public GenderModel Gender { get; set; }
 
         public DateTime BirthDate { get; set; }
 
-        public int Age 
+        public int Age
         {
 
             get
@@ -31,7 +29,7 @@ namespace FitnessAppLibrary.BL.Model
                 {
                     age--;
                 }
-                    return age;
+                return age;
             }
 
         }
@@ -90,7 +88,7 @@ namespace FitnessAppLibrary.BL.Model
             Height = height;
         }
 
-        public UserModel(string name) 
+        public UserModel(string name)
         {
 
             if (string.IsNullOrWhiteSpace(name))

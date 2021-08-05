@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FitnessAppLibrary.BL.Controller;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit.Sdk;
 
 namespace FitnessAppLibrary.BL.Controller.Tests
@@ -16,11 +13,11 @@ namespace FitnessAppLibrary.BL.Controller.Tests
         public void AddNewUserDataTest()
         {
             // Arrange
-            string  userName = Guid.NewGuid().ToString();
+            string userName = Guid.NewGuid().ToString();
             DateTime birthDate = DateTime.Now.AddYears(-18);
             double weight = 78;
             double height = 186;
-            string genderName = "man";
+            string genderName = "male";
 
             UserController controller = new UserController(userName);
 

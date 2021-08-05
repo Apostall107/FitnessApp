@@ -4,22 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 
 namespace FitnessAppLibrary.BL.Controller
 {
     public class UserController
     {
         public List<UserModel> Users { get; }
-        public UserModel CurrentUser { get;  }
+        public UserModel CurrentUser { get; }
 
         public bool IsNewUser { get; } = false;
-        
+
 
         public UserController(string userName)
         {
 
-            if(string.IsNullOrWhiteSpace(userName))
+            if (string.IsNullOrWhiteSpace(userName))
             {
                 throw new ArgumentNullException("User name can not be empty.", nameof(userName));
             }
@@ -28,7 +27,7 @@ namespace FitnessAppLibrary.BL.Controller
             CurrentUser = Users.FirstOrDefault(x => x.Name == userName);
 
 
-            if(CurrentUser == null)
+            if (CurrentUser == null)
             {
                 CurrentUser = new UserModel(userName);
                 Users.Add(CurrentUser);
@@ -91,7 +90,7 @@ namespace FitnessAppLibrary.BL.Controller
 
             BinaryFormatter formatter = new BinaryFormatter();
 
-            using (FileStream fs = new FileStream("users.dat",  FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("users.dat", FileMode.OpenOrCreate))
             {
 
                 formatter.Serialize(fs, Users);
