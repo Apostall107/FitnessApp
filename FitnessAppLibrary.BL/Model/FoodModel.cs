@@ -4,6 +4,10 @@ using System.Text;
 
 namespace FitnessAppLibrary.BL.Model
 {
+    /// <summary>
+    /// Food  and it`s energy data.
+    /// </summary>
+    [Serializable]
     public class FoodModel
     {
 
@@ -30,7 +34,7 @@ namespace FitnessAppLibrary.BL.Model
         public double Calories { get; set; }
 
         /// <summary>
-        ///  Energy in kilojoules/100g of product.
+        ///  Energy in kilojoules.
         /// </summary>
         public double Energy 
         {
@@ -63,12 +67,12 @@ namespace FitnessAppLibrary.BL.Model
         {
             // TODO: checks
 
-
             Name = name;
             Calories = callories / 100.0;
             Protein = protein / 100.0;
             Fat = fat / 100.0;
             Carbohydrate = carbohydate / 100.0;
+
         }
 
         public override string ToString()
