@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace FitnessAppLibrary.BL.Controller
 {
-    public class UserController
+    public class UserController : BasicController
     {
         public List<UserModel> Users { get; }
         public UserModel CurrentUser { get; }
@@ -22,6 +22,7 @@ namespace FitnessAppLibrary.BL.Controller
             {
                 throw new ArgumentNullException("User name can not be empty.", nameof(userName));
             }
+
             Users = GetUsersData();
 
             CurrentUser = Users.FirstOrDefault(x => x.Name == userName);
@@ -32,7 +33,6 @@ namespace FitnessAppLibrary.BL.Controller
                 CurrentUser = new UserModel(userName);
                 Users.Add(CurrentUser);
                 IsNewUser = true;
-                Save();
             }
 
             //GenderModel gender = new GenderModel(genderName);
@@ -42,28 +42,14 @@ namespace FitnessAppLibrary.BL.Controller
         private List<UserModel> GetUsersData()
         {
 
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            using (FileStream fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-
-                if (formatter.Deserialize(fs) is List<UserModel> users)
-                {
-                    return users;
-                }
-                else
-                {
-                    return new List<UserModel>();
-                }
-
-            }
+            return Load<UserModel>() ?? new List<UserModel>();
 
         }
 
 
 
 
-        public void AddNewUserData(string genderName, DateTime birthDate, double weight = 0, double height = 0)
+        public void AddNewUserData(string genderName, DateTime birthDate, double weight = 1, double height = 1)
         {
             //TODO: add checks.
 
@@ -82,21 +68,9 @@ namespace FitnessAppLibrary.BL.Controller
         //    return DateTime.TryParse(txtDate, out tempDate);
         //}
 
-
-
-
         public void Save()
         {
-
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            using (FileStream fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-
-                formatter.Serialize(fs, Users);
-
-            }
-
+            base.Save(Users);
         }
 
 

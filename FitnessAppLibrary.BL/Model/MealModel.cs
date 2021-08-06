@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace FitnessAppLibrary.BL.Model
@@ -9,12 +10,17 @@ namespace FitnessAppLibrary.BL.Model
     /// Taking of the meal process.
     /// </summary>
     [Serializable]
-    class MealModel
+    public class MealModel
     {
-
+        /// <summary>
+        ///  Time when user take a meal.
+        /// </summary>
         public DateTime MealTime { get; }
 
-        public Dictionary<FoodModel, double> FoodEnumeration { get; set; }
+        /// <summary>
+        /// List of food user eaten/
+        /// </summary>
+        public Dictionary<FoodModel, double> FoodList { get; set; }
 
         public UserModel User { get; }
         public MealModel() { }
@@ -23,11 +29,26 @@ namespace FitnessAppLibrary.BL.Model
         {
             User = user ?? throw new ArgumentNullException("\"User\" can not be empty.", nameof(user));
             MealTime = DateTime.UtcNow;
-            FoodEnumeration = new Dictionary<FoodModel, double>();
+            FoodList = new Dictionary<FoodModel, double>();
         }
 
 
+        /// <summary>
+        ///  Add food to current meal.
+        /// </summary>
+        public void Add(FoodModel food, double weight)
+        {
+            FoodModel product = FoodList.Keys.FirstOrDefault(f => f.Name.Equals(food.Name));
 
+            if (product == null)
+            {
+                FoodList.Add(food, weight);
+            }
+            else
+            {
+                FoodList[product] += weight;
+            }
+        }
 
 
     }

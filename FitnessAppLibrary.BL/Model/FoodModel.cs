@@ -58,7 +58,6 @@ namespace FitnessAppLibrary.BL.Model
 
 
 
-
         public FoodModel() { }
 
         public FoodModel(string name) : this(name, 0, 0, 0, 0) { }

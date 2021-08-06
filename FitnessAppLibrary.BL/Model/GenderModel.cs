@@ -8,6 +8,8 @@ namespace FitnessAppLibrary.BL.Model
 
         public string Name { get; set; }
 
+
+        public GenderModel() { }
         public GenderModel(string name)
         {
 
