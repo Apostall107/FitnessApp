@@ -7,7 +7,7 @@ namespace FitnessAppLibrary.BL.Controller
     {
         public List<T> Load<T>() where T : class
         {
-            using (var db = new FitnessContext())
+            using (FitnessContext db = new FitnessContext())
             {
                 List<T> result = db.Set<T>().Where(t => true).ToList();
                 return result;
