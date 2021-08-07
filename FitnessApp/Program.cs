@@ -1,6 +1,8 @@
 ﻿using FitnessAppLibrary.BL.Controller;
 using FitnessAppLibrary.BL.Model;
 using System;
+using System.Globalization;
+using System.Resources;
 
 namespace FitnessApp
 {
@@ -11,8 +13,17 @@ namespace FitnessApp
         static void Main(string[] args)
         {
 
+            CultureInfo culture = new CultureInfo("en-us");
+            ResourceManager resourceManager = new ResourceManager("FitnessApp.CDM.Language.Massages", typeof(Program).Assembly);
+
+
+
+
+
+
+
             Console.Clear();
-            Console.WriteLine("The \"FitnessApp\" welcomes you!");
+            Console.WriteLine("StartupGreeting", culture);
 
             Console.WriteLine("Enter the user name.");
             string name = Console.ReadLine();
@@ -32,6 +43,9 @@ namespace FitnessApp
 
             UserController userController = new UserController(name);
             MealController mealController = new MealController(userController.CurrentUser);
+            TrainingController trainingController = new TrainingController(userController.CurrentUser);
+
+
 
 
             //TODO: add checks. birth date.
@@ -52,13 +66,17 @@ namespace FitnessApp
             }
 
 
+
+
+
             Console.WriteLine(userController.CurrentUser);
 
             while (true)
             {
                 Console.WriteLine("What do you want to do?");
                 Console.WriteLine("M - add new meal.");
-                Console.WriteLine("E - exit");
+                Console.WriteLine("T - add new training.");
+                Console.WriteLine("E - exit.");
                 var key = Console.ReadKey();
                 Console.WriteLine();
                 switch (key.Key)
@@ -72,7 +90,16 @@ namespace FitnessApp
                             Console.WriteLine($"\t{item.Key} - {item.Value}g");
                         }
                         break;
+                    case ConsoleKey.T:
+                        var exe = EnterExercise();
 
+                        trainingController.Add(exe.exercise, exe.Begin, exe.End);
+
+                        foreach (var item in trainingController.userTrainingList)
+                        {
+                            Console.WriteLine($"\t-{item.Exersice}: since {item.StartTime.ToShortTimeString()} to {item.FinishTime.ToShortTimeString()}");
+                        }
+                        break;
                     case ConsoleKey.E:
                         Environment.Exit(0);
                         break;
@@ -94,6 +121,20 @@ namespace FitnessApp
         }
 
 
+
+        private static (DateTime Begin, DateTime End, ExerciseModel exercise) EnterExercise()
+        {
+            Console.Write("Enter exercise naming:");
+            string name = Console.ReadLine();
+
+            double energy = ParseDouble("Enter energy consumption per 1 minute of exercise:");
+
+            DateTime begin = ParseDateTime("Enter when exercise started:");
+            DateTime end = ParseDateTime("Enter when exercise finished:");
+
+            ExerciseModel exercise = new ExerciseModel(name, energy);
+            return (begin, end, exercise);
+        }
 
         private static (FoodModel Food, double Weight) EnterNewMealData()
         {
