@@ -1,12 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controller\DbDataSaver.cs" />
-    <Compile Remove="Controller\FitnessContext.cs" />
+    <None Remove="App.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Include="App.config" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 
-    public abstract class DbDataSaver : IDataSaver
+    public class DbDataSaver : IDataSaver
     {
         public List<T> Load<T>() where T : class
         {

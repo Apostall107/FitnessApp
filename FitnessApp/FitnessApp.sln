@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessApp.CMD", "FitnessAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessAppLibrary.BL", "..\FitnessAppLibrary.BL\FitnessAppLibrary.BL.csproj", "{9339B838-8496-45BB-8E9D-A24DB28A0AE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessAppLibrary.BLTests", "..\FitnessAppLibrary.BLTests\FitnessAppLibrary.BLTests.csproj", "{595C6EEA-F4EB-43E6-8825-78834AB95708}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessAppLibrary.BLTests", "..\FitnessAppLibrary.BLTests\FitnessAppLibrary.BLTests.csproj", "{595C6EEA-F4EB-43E6-8825-78834AB95708}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
