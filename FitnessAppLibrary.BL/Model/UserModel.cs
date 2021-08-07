@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FitnessAppLibrary.BL.Model
 {
@@ -9,12 +10,19 @@ namespace FitnessAppLibrary.BL.Model
     public class UserModel
     {
 
+
         #region Properties
-        public string Name { get; }
+
+        public int Id { get; set; }
+
+
+        public string Name { get; set; }
+
+        public int? GenderId { get; set; }
 
         public GenderModel Gender { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public virtual DateTime BirthDate { get; set; } = DateTime.Now;
 
         public int Age
         {
@@ -40,12 +48,24 @@ namespace FitnessAppLibrary.BL.Model
         public double Weight { get; set; }
 
         public double Height { get; set; }
+
+
+
+        public virtual ICollection<MealModel> Meals { get; set; }
+        public virtual ICollection<ExerciseModel> Exercises { get; set; }
+
+
+
         #endregion
+
+
 
         public UserModel(string name, GenderModel gender, DateTime birthDate, double weight, double height)
         {
 
             #region Check
+
+
             if (string.IsNullOrWhiteSpace(name))
             {
 
@@ -82,6 +102,7 @@ namespace FitnessAppLibrary.BL.Model
 
             }
 
+
             #endregion
 
             Name = name;
@@ -89,6 +110,7 @@ namespace FitnessAppLibrary.BL.Model
             BirthDate = birthDate;
             Weight = weight;
             Height = height;
+
         }
 
         public UserModel(string name)

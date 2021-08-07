@@ -10,15 +10,28 @@ namespace FitnessAppLibrary.BL.Model
     [Serializable]
     public class TrainingModel
     {
-        // TODO: Look if needed to remake logic. Exercise model may contain calories per minute instead of PhysicalActivityModel and PhysActModel should be replaced with TrainigModel similar to FoodModel - MealModel.
+
+
+        #region Prop
+
+        public int Id { get; set; }
 
         public DateTime StartTime { get; set; }
 
         public DateTime FinishTime { get; set; }
 
-        public ExerciseModel Exersice { get; set; }
+        public int ExersiceId { get; set; }
 
-        public UserModel User { get; set; }
+        public virtual ExerciseModel Exersice { get; set; }
+
+        public int UserId { get; set; }
+
+        public virtual UserModel User { get; set; }
+
+        #endregion
+
+
+
 
         public TrainingModel(DateTime startTime, DateTime finishTime, ExerciseModel exercise, UserModel user)
         {
@@ -29,5 +42,8 @@ namespace FitnessAppLibrary.BL.Model
             Exersice = exercise;
             User = user;
         }
+
+
+
     }
 }

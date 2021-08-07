@@ -29,8 +29,8 @@ namespace FitnessAppLibrary.BL.Controller.Tests
             trainingController.Add(exercise, DateTime.Now.AddHours(-2) , DateTime.Now.AddMinutes(-45) );
 
             //Assert
-            Assert.AreEqual(exercise.Name, trainingController.exercisesList.Last().Name);
-            Assert.AreEqual(exercise.CaloriesPerMinute, trainingController.exercisesList.Last().CaloriesPerMinute);
+            Assert.AreEqual(exercise.Name, trainingController.ExercisesList.Last().Name);
+            Assert.AreEqual(exercise.CaloriesPerMinute, trainingController.ExercisesList.Last().CaloriesPerMinute);
 
         }
     }

@@ -12,12 +12,29 @@ namespace FitnessAppLibrary.BL.Model
     public class ExerciseModel
     {
 
+
+        #region Prop
+
+
+        public int Id { get; set; }
+
+
         public string Name { get; set; }
         /// <summary>
         ///  Calories consumed per 1 minute of activity.
         /// </summary>
         public double CaloriesPerMinute { get; set; }
 
+
+        public virtual ICollection<TrainingModel> Trainings { get; set; }
+
+
+
+        #endregion
+
+
+
+        public ExerciseModel() { }
         public ExerciseModel(string name, double caloriesPerMinute)
         {
             // TODO: checks.
@@ -29,7 +46,7 @@ namespace FitnessAppLibrary.BL.Model
 
         public override string ToString()
         {
-            return "" ;
+            return Name ;
         }
 
 

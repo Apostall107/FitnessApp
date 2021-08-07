@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FitnessAppLibrary.BL.Model
 {
@@ -6,7 +7,14 @@ namespace FitnessAppLibrary.BL.Model
     public class GenderModel
     {
 
+        public int Id { get; set; }
+
+
         public string Name { get; set; }
+
+
+        public virtual ICollection<UserModel> Users { get; set; }
+
 
 
         public GenderModel() { }

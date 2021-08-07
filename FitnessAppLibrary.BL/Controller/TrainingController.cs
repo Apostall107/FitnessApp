@@ -13,33 +13,33 @@ namespace FitnessAppLibrary.BL.Controller
         private readonly UserModel user;
 
         // TODO: see if needed to do as Dictionary kinda <user, trainig>
-        public List<TrainingModel> userTrainingList{ get; }
-        public List<ExerciseModel> exercisesList  { get; }
+        public List<TrainingModel> UserTrainingList{ get; }
+        public List<ExerciseModel> ExercisesList  { get; }
 
 
         public TrainingController(UserModel user)
         {
             this.user = user ?? throw new ArgumentNullException(nameof(user));
 
-            userTrainingList = GetAllUserTrainingList();
-            exercisesList = GetAllExercisesList();
+            UserTrainingList = GetAllUserTrainingList();
+            ExercisesList = GetAllExercisesList();
 
         }
         public void Add(ExerciseModel exercise, DateTime begin, DateTime end)
         {
-            var currebtEx = exercisesList.FirstOrDefault(a => a.Name == exercise.Name);
+            var currebtEx = ExercisesList.FirstOrDefault(a => a.Name == exercise.Name);
 
             if (currebtEx == null)
             {
-                exercisesList.Add(exercise);
+                ExercisesList.Add(exercise);
 
                 TrainingModel training = new TrainingModel(begin, end, exercise, user);
-                userTrainingList.Add(training);
+                UserTrainingList.Add(training);
             }
             else
             {
                 var training = new TrainingModel(begin, end, currebtEx, user);
-                userTrainingList.Add(training);
+                UserTrainingList.Add(training);
             }
             Save();
         }
@@ -56,8 +56,8 @@ namespace FitnessAppLibrary.BL.Controller
 
         private void Save()
         {
-            base.Save(userTrainingList);
-            base.Save(exercisesList);
+            base.Save(UserTrainingList);
+            base.Save(ExercisesList);
         }
 
 

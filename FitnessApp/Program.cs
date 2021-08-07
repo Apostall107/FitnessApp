@@ -18,27 +18,12 @@ namespace FitnessApp
 
 
 
-
-
-
-
             Console.Clear();
             Console.WriteLine("StartupGreeting", culture);
 
             Console.WriteLine("Enter the user name.");
             string name = Console.ReadLine();
 
-            //Console.WriteLine("Enter the user name.");
-            //string gender = Console.ReadLine();
-
-            //Console.WriteLine("Enter the user name.");
-            //DateTime birthDate = DateTime.Parse(Console.ReadLine());
-
-            //Console.WriteLine("Enter the user name.");
-            //double weight = double.Parse(Console.ReadLine());
-
-            //Console.WriteLine("Enter the user name.");
-            //double height = double.Parse(Console.ReadLine());
 
 
             UserController userController = new UserController(name);
@@ -47,8 +32,6 @@ namespace FitnessApp
 
 
 
-
-            //TODO: add checks. birth date.
             if (userController.IsNewUser)
             {
                 Console.WriteLine("Enter your gender :");
@@ -81,9 +64,10 @@ namespace FitnessApp
                 Console.WriteLine();
                 switch (key.Key)
                 {
+                    //TODO: fix  that same food add to overall  weight of this product. Add dependency from date time. need to make energy value enter from product if it is added to list already
                     case ConsoleKey.M:
-                        var foods = EnterNewMealData();
-                        mealController.Add(foods.Food, foods.Weight);
+                        (FoodModel Food, double Weight) product = EnterNewMealData();
+                        mealController.Add(product.Food, product.Weight);
 
                         foreach (var item in mealController.Meal.FoodList)
                         {
@@ -95,7 +79,7 @@ namespace FitnessApp
 
                         trainingController.Add(exe.exercise, exe.Begin, exe.End);
 
-                        foreach (var item in trainingController.userTrainingList)
+                        foreach (var item in trainingController.UserTrainingList)
                         {
                             Console.WriteLine($"\t-{item.Exersice}: since {item.StartTime.ToShortTimeString()} to {item.FinishTime.ToShortTimeString()}");
                         }
@@ -121,6 +105,7 @@ namespace FitnessApp
         }
 
 
+        #region EnterData
 
         private static (DateTime Begin, DateTime End, ExerciseModel exercise) EnterExercise()
         {
@@ -156,14 +141,18 @@ namespace FitnessApp
         }
 
 
+        #endregion
+
+
+        #region DataParsers
 
         private static DateTime ParseDateTime(string value)
         {
-            DateTime birthDate;
+            DateTime dateValue;
             while (true)
             {
-                Console.Write($"Enter your {value} (dd.mm.yyyy): ");
-                if (DateTime.TryParse(Console.ReadLine(), out birthDate))
+                Console.Write($"Enter your {value} (dd.mm.yyyy)/(dd.mm.yyyy hh:mm (for exercises)) : ");
+                if (DateTime.TryParse(Console.ReadLine(), out dateValue))
                 {
                     break;
                 }
@@ -174,8 +163,10 @@ namespace FitnessApp
                 }
             }
 
-            return birthDate;
+            return dateValue;
         }
+
+
 
         private static double ParseDouble(string name)
         {
@@ -194,6 +185,7 @@ namespace FitnessApp
         }
 
 
+        #endregion
         private static void TryAgain<T>(T value)
         {
             Console.WriteLine($"Invalid format  of {value} \nPlease press any key to try again.");

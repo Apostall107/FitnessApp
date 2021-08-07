@@ -11,6 +11,12 @@ namespace FitnessAppLibrary.BL.Model
     public class FoodModel
     {
 
+
+
+        #region Prop
+
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         /// <summary>
@@ -36,25 +42,32 @@ namespace FitnessAppLibrary.BL.Model
         /// <summary>
         ///  Energy in kilojoules.
         /// </summary>
-        public double Energy 
+        public double Energy
         {
             get
             {
 
                 if (Calories > 0)
                 {
-                    return  Calories * 4.1868;
+                    return Calories * 4.1868;
                 }
                 else
                 {
 
-                    return  0;
+                    return 0;
 
                 }
 
             }
-        
+
         }
+
+
+
+        public virtual ICollection<MealModel> Meals { get; set; }
+
+        #endregion
+
 
 
 
@@ -73,6 +86,8 @@ namespace FitnessAppLibrary.BL.Model
             Carbohydrate = carbohydate / 100.0;
 
         }
+
+
 
         public override string ToString()
         {
