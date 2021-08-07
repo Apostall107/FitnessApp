@@ -14,7 +14,7 @@ namespace FitnessAppLibrary.BL.Controller
 
             using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
             {
-                if (fs.Length > 0  && formatter.Deserialize(fs) is List<T> items)
+                if (fs.Length > 0 && formatter.Deserialize(fs) is List<T> items)
                 {
                     return items;
                 }

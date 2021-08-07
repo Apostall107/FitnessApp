@@ -1,9 +1,8 @@
 ﻿using FitnessAppLibrary.BL.Model;
 using System.Data.Entity;
 
-
-
-
+namespace FitnessAppLibrary.BL.Controller
+{
     public class FitnessContext : DbContext
     {
 
@@ -18,3 +17,4 @@ using System.Data.Entity;
         public DbSet<FoodModel> Food { get; set; }
 
     }
+}

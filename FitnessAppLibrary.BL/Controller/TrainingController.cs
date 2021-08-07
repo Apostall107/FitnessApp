@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace FitnessAppLibrary.BL.Controller
 {
@@ -13,8 +12,8 @@ namespace FitnessAppLibrary.BL.Controller
         private readonly UserModel user;
 
         // TODO: see if needed to do as Dictionary kinda <user, trainig>
-        public List<TrainingModel> UserTrainingList{ get; }
-        public List<ExerciseModel> ExercisesList  { get; }
+        public List<TrainingModel> UserTrainingList { get; }
+        public List<ExerciseModel> ExercisesList { get; }
 
 
         public TrainingController(UserModel user)

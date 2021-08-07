@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FitnessAppLibrary.BL.Model
 {
@@ -46,7 +45,7 @@ namespace FitnessAppLibrary.BL.Model
 
         public override string ToString()
         {
-            return Name ;
+            return Name;
         }
 
 

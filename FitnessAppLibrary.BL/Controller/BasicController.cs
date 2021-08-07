@@ -3,7 +3,7 @@
 
 namespace FitnessAppLibrary.BL.Controller
 {
-    public  abstract class BasicController
+    public abstract class BasicController
     {
         private readonly IDataSaver manager = new SerializeSaver();
         //private readonly IDataSaver manager = new DbDataSaver();

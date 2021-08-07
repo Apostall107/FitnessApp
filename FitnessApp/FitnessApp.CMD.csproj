@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FitnessAppLibrary.BL\FitnessAppLibrary.BL.csproj">
-      <Project>{9339b838-8496-45bb-8e9d-a24db28a0ae2}</Project>
+      <Project>{67fa25e7-1a68-43bb-98f3-1f0d9c6a0a6d}</Project>
       <Name>FitnessAppLibrary.BL</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,9 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FitnessAppLibrary.BL.Controller;
+﻿using FitnessAppLibrary.BL.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using FitnessAppLibrary.BL.Model;
 using System.Linq;
 
 namespace FitnessAppLibrary.BL.Controller.Tests

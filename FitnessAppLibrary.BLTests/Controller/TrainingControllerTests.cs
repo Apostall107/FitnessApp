@@ -1,9 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FitnessAppLibrary.BL.Controller;
+﻿using FitnessAppLibrary.BL.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using FitnessAppLibrary.BL.Model;
 using System.Linq;
 
 namespace FitnessAppLibrary.BL.Controller.Tests
@@ -26,7 +23,7 @@ namespace FitnessAppLibrary.BL.Controller.Tests
             ExerciseModel exercise = new ExerciseModel(exerciseName, random.Next(5, 500));
 
             //Act
-            trainingController.Add(exercise, DateTime.Now.AddHours(-2) , DateTime.Now.AddMinutes(-45) );
+            trainingController.Add(exercise, DateTime.Now.AddHours(-2), DateTime.Now.AddMinutes(-45));
 
             //Assert
             Assert.AreEqual(exercise.Name, trainingController.ExercisesList.Last().Name);
