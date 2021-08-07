@@ -2,6 +2,9 @@
 
 namespace FitnessAppLibrary.BL.Model
 {
+    /// <summary>
+    /// Contains all user data.
+    /// </summary>
     [Serializable]
     public class UserModel
     {

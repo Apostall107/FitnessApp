@@ -4,26 +4,34 @@ using System.Text;
 
 namespace FitnessAppLibrary.BL.Model
 {
+
+    /// <summary>
+    /// Contains data of exercise.
+    /// </summary>
+    [Serializable]
     public class ExerciseModel
     {
-        // TODO: Look if needed to remake logic. Exercise model may contain calories per minute instead of PhysicalActivityModel and PhysActModel should be replaced with TrainigModel similar to FoodModel - MealModel.
 
-        public DateTime StartTime { get; set; }
+        public string Name { get; set; }
+        /// <summary>
+        ///  Calories consumed per 1 minute of activity.
+        /// </summary>
+        public double CaloriesPerMinute { get; set; }
 
-        public DateTime FinishTime { get; set; }
-
-        public PhysicalActivityModel PhysicalActivity { get; set; }
-
-        public UserModel User { get; set; }
-
-        public ExerciseModel(DateTime startTime, DateTime finishTime, PhysicalActivityModel physicalActivity, UserModel user)
+        public ExerciseModel(string name, double caloriesPerMinute)
         {
-            //TODO: checks.
+            // TODO: checks.
 
-            StartTime = startTime;
-            FinishTime = finishTime;
-            PhysicalActivity = physicalActivity;
-            User = user;
+            Name = name;
+            CaloriesPerMinute = caloriesPerMinute;
         }
+
+
+        public override string ToString()
+        {
+            return "" ;
+        }
+
+
     }
 }
