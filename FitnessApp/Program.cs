@@ -13,13 +13,13 @@ namespace FitnessApp
         static void Main(string[] args)
         {
 
-            CultureInfo culture = new CultureInfo("en-us");
-            ResourceManager resourceManager = new ResourceManager("FitnessApp.CDM.Language.Massages", typeof(Program).Assembly);
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("ru-ru");
+            ResourceManager resourceManager = new ResourceManager("FitnessApp.Languages.Messages", typeof(Program).Assembly);
 
 
 
             Console.Clear();
-            Console.WriteLine("StartupGreeting", culture);
+            Console.WriteLine(resourceManager.GetString("StartupGreeting", culture));
 
             Console.WriteLine("Enter the user name.");
             string name = Console.ReadLine();

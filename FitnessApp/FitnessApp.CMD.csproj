@@ -55,5 +55,11 @@
       <Name>FitnessAppLibrary.BL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Languages\Messages.en-us.resx" />
+    <EmbeddedResource Include="Languages\Messages.ru-ru.resx" />
+    <EmbeddedResource Include="Languages\Messages.resx" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

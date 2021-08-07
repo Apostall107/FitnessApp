@@ -272,11 +272,6 @@
             "AssemblyAsmDisplayName" = "8:FitnessAppLibrary.BL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_969529029EF7068FAC0E6FE2A58905B5"
-                    {
-                    "Name" = "8:FitnessAppLibrary.BL.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:FitnessAppLibrary.BL.dll"
             "TargetName" = "8:"
@@ -353,7 +348,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup"
         "ProductCode" = "8:{092B1891-A183-4B8C-8A54-C6FEBD9AF78E}"
-        "PackageCode" = "8:{A1466B40-1A59-479C-AC7C-95B164E18373}"
+        "PackageCode" = "8:{DD70425C-EA92-4C9A-82C8-3FBA89233BC9}"
         "UpgradeCode" = "8:{18A27739-8FDF-4587-8096-058E6D41F73D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -361,7 +356,7 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:HrynOlexander(Apostall107)"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Setup"
@@ -473,6 +468,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AA8545BB5161449EB497BF0CD13F4B4D"
+            {
+            "Name" = "8:FintessApp"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_7DDBD7C53C1948589A70717DE7A18BEB"
+            "Folder" = "8:_7E88C8B6ACF64942855A55AD6835E9A0"
+            "WorkingFolder" = "8:_96DFBFCBDD814649B0B4418971D25AB5"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
